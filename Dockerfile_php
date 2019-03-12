@@ -1,0 +1,32 @@
+######
+# See: https://hub.docker.com/_/php/
+######
+FROM php:7.2.7-fpm-alpine3.7
+######
+# You can install php extensions using docker-php-ext-install
+######
+ENV install \
+    freetype-dev \
+    libjpeg-turbo-dev \
+    jpeg-dev \
+    libpng-dev \
+    curl-dev \
+    icu-dev \
+    libxml2-dev \
+    zlib-dev \
+    apk-cron \
+    libmemcached-dev \
+    tzdata
+RUN apk add --no-cache $install \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && pecl install -o -f redis && docker-php-ext-enable redis \
+    && curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-memcached/archive/php7.tar.gz" \
+    && mkdir -p /usr/src/php/ext/memcached \
+    && tar -C /usr/src/php/ext/memcached -zxvf /tmp/memcached.tar.gz --strip 1 \
+    && docker-php-ext-configure memcached \
+    && docker-php-ext-install -j$(nproc) gd iconv pdo_mysql intl curl opcache xml mbstring exif memcached pcntl posix\
+    && rm /tmp/memcached.tar.gz \
+    && curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer.phar \
+    && rm -rf /var/cache/apk/* \
+    && cp /usr/share/zoneinfo/America/New_York /etc/localtime

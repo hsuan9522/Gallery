@@ -1,0 +1,8 @@
+FROM node:9.11.2-alpine
+RUN npm i npm@latest -g \
+# && npm install nodemon -g \
+ && apk add --no-cache ncurses tzdata \
+ && cp /usr/share/zoneinfo/America/New_York /etc/localtime
+
+ENV HOST 0.0.0.0
+EXPOSE 80

@@ -1,0 +1,206 @@
+.carousel-enter-active,
+.carousel-leave-active {
+    transition: opacity 2s;
+}
+
+.carousel-enter,
+.carousel-leave-to {
+    opacity: 0;
+}
+
+#map {
+    height: 100vh
+}
+
+#popup {
+    height: 27px;
+    width: 15px;
+    position: relative;
+    right: 0px;
+    top: -29px; // background: #000; // opacity: 0.5;
+}
+
+#click_info {
+    position: relative;
+    right: 0px;
+    top: -66px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    &:before {
+        position: absolute;
+        top: 26px;
+        left: 50%;
+        margin-left: -10px;
+        border-style: solid;
+        border-width: 11px 12px 0 10px;
+        border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+        content: '';
+    }
+    &.two-line {
+        top: -87px;
+        &:before {
+            top: 47px;
+        }
+    }
+}
+
+#pic_carousel {
+    position: absolute;
+    z-index: 1111;
+    right: 0;
+    top: 0px;
+    width: 55vw;
+    background: rgba(0, 0, 0, .7);
+    height: 100vh;
+    background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.7) 77%, rgba(0, 0, 0, 0) 99%);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7) 77%, rgba(0, 0, 0, 0) 99%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    #pic_list_wrapper {
+        position: relative;
+        right: -5%; // margin-top: 25px;
+    }
+    .pic_list {
+        overflow: auto;
+        margin: 2.5vh 0 0 15%;
+        width: 44vw;
+        height: 66vh;
+    }
+    .pic_info {
+        margin: 0 8% 0 19%;
+        color: #fff;
+        height: 27.5vh;
+    }
+    /*modify carousel class */
+    .carousel-item {
+        img {
+            width: 80% !important;
+            margin: auto;
+            height: 61vh;
+            object-fit: contain;
+        }
+    }
+    .carousel-indicators {
+        bottom: 5px;
+        li {
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            margin-right: 2px;
+        }
+    }
+    .carousel-item {
+        opacity: 0;
+        transition: opacity 0.6s linear;
+    }
+    .carousel-item.active,
+    .carousel-item-next.carousel-item-left,
+    .carousel-item-prev.carousel-item-right {
+        opacity: 1;
+    }
+}
+
+#pic_info_title {
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+
+#pic_info_content {
+    height: 20vh;
+    overflow: auto;
+}
+
+#travel_time {
+    text-align: right;
+    padding-top: 6px;
+}
+
+#pic_list_close_btn {
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    border: none;
+    font-size: 25px;
+    background: none;
+    color: #fff;
+}
+
+.mobile_diary_modal {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.86);
+    top: 0;
+    width: 95%;
+    margin: 2.5% 2.5%;
+    height: 95%;
+    border-radius: 10px;
+    color: #fff;
+    z-index: 11;
+    .close_btn {
+        text-align: right;
+        padding: 0px 7px 0;
+        font-weight: bold;
+        font-size: 22px;
+        height: 27px;
+    }
+}
+
+#mobile_diary_text {
+    height: 82%;
+    overflow: auto;
+    padding: 0 15px;
+}
+
+#mobile_diary_time {
+    font-size: 14px;
+    text-align: right;
+    padding-right: 17px;
+}
+
+@media(max-width:450px) {
+    #map {
+        height: 100%;
+        position: absolute;
+    }
+    #pic_carousel {
+        position: absolute;
+        left: 0;
+        top: initial;
+        bottom: 0;
+        width: 100vw;
+        height: 54%;
+        background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        #pic_list_wrapper {
+            right: initial;
+            .carousel {
+                top: 15px;
+            }
+        }
+        .carousel-item {
+            img {
+                width: 95% !important;
+                height: 45vh;
+                object-fit: cover;
+            }
+        }
+        .carousel-indicators {
+            display: none;
+        }
+    }
+    #pic_list_close_btn {
+        color: #000;
+        right: 5%;
+        top: 50px;
+        background: #fff;
+        border-radius: 100%;
+        z-index: 11;
+        padding: 0px 8px 4px;
+        font-size: 16px;
+    }
+}
