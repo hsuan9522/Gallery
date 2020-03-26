@@ -23,6 +23,8 @@ services:
       dockerfile: Dockerfile_node
     image: gallery_vuex
     container_name: gallery_vuex
+    ports:
+      - "4000:4000"
     expose:
       - "80"
     volumes:
