@@ -172,12 +172,12 @@ export default {
 				},
 				{
 					skill: 'SQL',
-					value: 50,
+					value: 40,
 					variant: 'warning'
 				},
 				{
 					skill: 'PHP',
-					value: 60,
+					value: 40,
 					variant: 'success'
 				},
 				{
