@@ -67,7 +67,7 @@ export default {
 			category_list: [
 				{
 					name: 'Photography',
-					url: '/images/gallery/photography/US-IMG_0105.jpg',
+					url: '/images/carousel/Orlando/IMG_0105.jpg',
 					detail: '業餘隨手拍，把眼裡看到的每一瞬間記錄在此。',
 				},
 				{
