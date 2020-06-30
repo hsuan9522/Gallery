@@ -1,23 +1,18 @@
 # gallery_v2
+> 前後端不分離，後端簡易使用到PHP，前端則是Nuxt.js，因此用到Docker起，nginx導向。
 
-> Nuxt.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-$ npm install # Or yarn install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
+## Up & Stop
+```
+docker-compose up -d
+docker-compose down
+```
+## URL
+```
+localhost:8080
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## Check 
+```
+docker-compose logs -f
+```
 
